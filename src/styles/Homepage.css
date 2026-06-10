@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+
+.gazette-wrapper {
+  background-color: #f5e6c8;
+  min-height: 100vh;
+  padding: 1.5rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #1a1008;
+}
+
+.gazette-header {
+  text-align: center;
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.gazette-edition {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.gazette-title {
+  font-family: 'UnifrakturMaguntia', 'Old English Text MT', serif;
+  font-size: 3rem;
+  margin: 0.25rem 0;
+  line-height: 1;
+}
+
+.gazette-tagline {
+  font-style: italic;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.gazette-divider {
+  border: none;
+  border-top: 3px double #1a1008;
+  margin: 0.75rem 0 1.5rem;
+}
+
+/* --- MOBILE (défaut) : 1 colonne, articles empilés --- */
+.gazette-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.gazette-article--new_society,
+.gazette-article--new_wizard,
+.gazette-article--new_vote,
+.gazette-article--edit_wizard,
+.gazette-article--edit_society {
+  grid-column: span 1;
+  border-bottom: 1px solid #1a1008;
+  padding-bottom: 1rem;
+}
+
+.gazette-article--new_society .gazette-article-headline { font-size: 1.6rem; }
+.gazette-article--new_wizard .gazette-article-headline  { font-size: 1.3rem; }
+.gazette-article--new_vote .gazette-article-headline    { font-size: 1rem; font-style: italic; font-weight: normal; }
+.gazette-article--edit_wizard .gazette-article-headline,
+.gazette-article--edit_society .gazette-article-headline { font-size: 0.85rem; font-weight: normal; }
+
+/* --- DESKTOP : grille 4 colonnes --- */
+@media (min-width: 768px) {
+  .gazette-wrapper {
+    padding: 2rem 3rem;
+  }
+
+  .gazette-title {
+    font-size: 5rem;
+  }
+
+  .gazette-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem 2rem;
+  }
+
+  .gazette-article--new_society {
+    grid-column: span 4;
+    border-bottom: 2px solid #1a1008;
+    text-align: center;
+  }
+
+  .gazette-article--new_society .gazette-article-headline { font-size: 2.4rem; line-height: 1.15; }
+
+  .gazette-article--new_wizard {
+    grid-column: span 2;
+    border-bottom: none;
+    border-right: 1px solid #1a1008;
+    padding-right: 1.5rem;
+    padding-bottom: 0;
+  }
+
+  .gazette-article--new_wizard .gazette-article-headline { font-size: 1.5rem; }
+
+  .gazette-article--new_vote {
+    grid-column: span 1;
+    border-bottom: none;
+    border-left: 2px solid #1a1008;
+    padding-left: 0.75rem;
+    padding-bottom: 0;
+  }
+
+  .gazette-article--edit_wizard,
+  .gazette-article--edit_society {
+    grid-column: span 1;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.gazette-article-date {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #7a5c2e;
+  margin: 0 0 0.3rem;
+}
+
+.gazette-article-headline {
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.gazette-article-body {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  text-align: justify;
+  margin-top: 0.5rem;
+  color: #2a1a08;
+}

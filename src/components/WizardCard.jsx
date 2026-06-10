@@ -5,7 +5,7 @@ import axios from 'axios'
 import '../styles/WizardCard.css'
 import placeholderPicture from '../assets/images/placeholder-avatar.png'
 
-function WizardCard ({id, firstName, lastName, society, status, avatar, loyalty, bloodStatus, societyId, voteCount = {}, allSocieties = []}) {
+function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty, bloodStatus, societyId, currentSocietyId, voteCount = {}, allSocieties = [] }) {
 
     const [selectedSocietyId, setSelectedSocietyId] = useState('')
     const [hasVoted, setHasVoted] = useState(localStorage.getItem('voted_wizard_' + id))
@@ -25,14 +25,15 @@ function WizardCard ({id, firstName, lastName, society, status, avatar, loyalty,
         }
     }
 
-    return(
+    return (
         <div className="wizard-card">
-            <div>
-                <Link to={`/societies/${societyId}`}>
-                    <p>{society?.name}</p>
+            {society?.name && (
+                <Link className="society-badge" to={`/societies/${societyId}`}>
+                    {society.name}
                 </Link>
-            </div>
-            <img src={avatar || placeholderPicture} alt="profile picture of the wizard" onError={(e) => e.target.src = placeholderPicture}/>
+            )}
+
+            <img src={avatar || placeholderPicture} alt="profile picture of the wizard" onError={(e) => e.target.src = placeholderPicture} />
             <h3>{firstName} {lastName}</h3>
             <p>{bloodStatus}</p>
             <p>Loyalty {loyalty}</p>
@@ -42,13 +43,21 @@ function WizardCard ({id, firstName, lastName, society, status, avatar, loyalty,
                     <p className="vote-confirmation">Vote submitted ✓</p>
                 ) : (
                     <>
-                        <select value={selectedSocietyId} onChange={(e) => setSelectedSocietyId(e.target.value)}>
-                            <option value="">Vote for a society</option>
-                            {allSocieties.map((s) => (
-                                <option key={s.id} value={s.id}>{s.name}</option>
-                            ))}
-                        </select>
-                        <button onClick={handleVote} disabled={!selectedSocietyId}>Vote</button>
+                        {currentSocietyId ? (
+                            <button onClick={handleVote}>Upvote to stay in society</button>
+                        )
+                            : (
+                                <>
+                                    <select value={selectedSocietyId} onChange={(e) => setSelectedSocietyId(e.target.value)}>
+                                        <option value="">Vote for a society</option>
+                                        {allSocieties.map((s) => (
+                                            <option key={s.id} value={s.id}>{s.name}</option>
+                                        ))}
+                                    </select>
+                                    <button onClick={handleVote} disabled={!selectedSocietyId}>Vote</button>
+                                </>
+                            )}
+
                     </>
                 )}
             </div>
@@ -61,7 +70,7 @@ function WizardCard ({id, firstName, lastName, society, status, avatar, loyalty,
                     <button>Edit</button>
                 </Link>
             </div>
-        </div>
+        </div >
     )
 }
 

@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* ─── DOCUMENT ───────────────────────────────────────────── */
+.new-wizard-form-container {
+    width: 100%;
+    /* max-width: 780px; */
+    min-height: 100vh;
+    background-color: #f0f0ed;
+    background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 27px,
+        rgba(0,0,0,0.04) 27px,
+        rgba(0,0,0,0.04) 28px
+    );
+    border: 1px solid #aaa89e;
+    font-family: 'Courier Prime', monospace;
+    color: #0f0e0a;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* ─── HEADER ─────────────────────────────────────────────── */
+.form-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2% 5% 1.5%;
+    border-bottom: 2px solid #0f0e0a;
+}
+
+/* ─── TAMPON STATUS ──────────────────────────────────────── */
+.status-stamp {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(10px, 2vw, 18px);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #7a1515;
+    border: 2.5px solid #7a1515;
+    padding: 0.3em 0.8em;
+    margin: 0;
+    transform: rotate(-3deg);
+    opacity: 0.9;
+    display: inline-block;
+}
+
+/* ─── BODY ───────────────────────────────────────────────── */
+.form-body {
+    padding: 4% 5% 5%;
+    box-sizing: border-box;
+}
+
+.form-body form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 4%;
+    row-gap: 0;
+}
+
+/* ─── IDENTITY CARD ──────────────────────────────────────── */
+.ministry-logo {
+    display: block;
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto 5%;
+}
+
+.form-identity-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #e2ddd4;
+    border: 1px solid #aaa89e;
+    padding: 3%;
+    width: 50%;
+    min-height: 50%;
+    height: auto;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    z-index: 1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-container {
+    flex: 1;
+    border: 1px solid #8a8278;
+    overflow: hidden;
+    margin-bottom: 4%;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-container img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.name-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.name-row > div {
+    width: 100%;
+}
+
+/* ─── RIGHT COLUMN ───────────────────────────────────────── */
+.right-column {
+    grid-column: 2;
+    grid-row: 1 / 3;
+}
+
+/* ─── LEFT COLUMN ────────────────────────────────────────── */
+.left-column {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+/* ─── SCHOOLING INFO ─────────────────────────────────────── */
+.schooling-info {
+    display: flex;
+    align-items: baseline;
+    gap: 2%;
+    border-bottom: 1px dotted #6a6560;
+    padding-bottom: 1%;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+}
+
+.schooling-info p {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(7px, 1vw, 9px);
+    letter-spacing: 0.14em;
+    color: #4a4640;
+    text-transform: uppercase;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.schooling-info span {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(9px, 1.3vw, 12px);
+    font-style: italic;
+    color: #0f0e0a;
+}
+
+/* ─── LABELS ─────────────────────────────────────────────── */
+label {
+    display: block;
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(7px, 1vw, 9px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #4a4640;
+    margin-top: 4%;
+    margin-bottom: 0.5%;
+}
+
+/* ─── INPUTS & SELECTS ───────────────────────────────────── */
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px dotted #6a6560;
+    padding: 0.5% 0.3%;
+    font-family: 'Gloria Hallelujah', monospace;
+    font-size: clamp(7px, 1vw, 9px);
+    color: #8c0daf;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-bottom: 1px solid #0f0e0a;
+    background: rgba(0,0,0,0.02);
+}
+
+/* ─── WAND SECTION ───────────────────────────────────────── */
+.wand-section {
+    border: 1px solid #6a6560;
+    padding: 4% 4% 3%;
+    margin-top: 4%;
+    position: relative;
+}
+
+.wand-section::before {
+    content: 'WAND';
+    position: absolute;
+    top: -8px;
+    left: 10px;
+    background-color: #c8c4b8;
+    padding: 0 6px;
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(7px, 1vw, 9px);
+    letter-spacing: 0.18em;
+    color: #4a4640;
+}
+
+.wand-section label {
+    margin-top: 3%;
+}
+
+.wand-section label:first-of-type {
+    margin-top: 0;
+}
+
+/* ─── WAND LENGTH ROW ────────────────────────────────────── */
+.wand-length-row {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-top: 1vh;
+}
+
+.wand-length-row label {
+    width: 100%;
+    margin-top: 3%;
+}
+
+.wand-length-row input {
+    width: 30%;
+    max-width: 60px;
+    flex-shrink: 0;
+}
+
+.wand-length-row span {
+    font-size: clamp(9px, 1.2vw, 11px);
+    color: #4a4640;
+    margin-left: 2%;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+.form-footer {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    border-top: 1px solid #6a6560;
+    margin-top: 4%;
+    padding-top: 3%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* ─── BOUTON SUBMIT ──────────────────────────────────────── */
+button[type="submit"] {
+    background: transparent;
+    border: 1.5px solid #0f0e0a;
+    padding: 1% 5%;
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(9px, 1.3vw, 12px);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #0f0e0a;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+button[type="submit"]:hover {
+    background: #0f0e0a;
+    color: #c8c4b8;
+}
+
+/* ─── MEDIA QUERY DESKTOP ────────────────────────────────── */
+@media (width > 1000px) {
+    .form-body form {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .form-identity-card {
+        width: 35%;
+    }
+}

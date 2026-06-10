@@ -28,7 +28,7 @@ function EditWizardPage() {
         e.preventDefault()
         try {
             await axios.put(`${import.meta.env.VITE_SERVER_URL}/wizards/${wizardId}`, wizardFormData)
-            navigate('/wizards/allwizards')
+            navigate('/wizards')
         } catch (error) {
             console.log(error)
         }
@@ -46,11 +46,27 @@ function EditWizardPage() {
         }
     }
 
+    const handleDelete = async() => {
+        try {
+            await axios.delete(`${import.meta.env.VITE_SERVER_URL}/wizards/${wizardId}`)
+            navigate('/wizards')
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     if (!wizardFormData) return <h3>Loading...</h3>
 
     return (
         <section id="new-wizard-page-section">
-            <WizardForm formData={wizardFormData} onSubmit={handleSubmit} onChange={handleChange} />
+            <WizardForm 
+                formData={wizardFormData}
+                onSubmit={handleSubmit}
+                onChange={handleChange}
+                onDelete={handleDelete}
+                isEditing={true}
+                onClose={() => navigate(-1)}
+            />
         </section>
     )
 }

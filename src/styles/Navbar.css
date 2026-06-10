@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 16px 40px;
+    background-color: #2c1a0e;
+    border-bottom: 3px solid #8b7355;
+}
+
+.navbar a {
+    font-family: 'Special Elite', cursive;
+    font-size: 1rem;
+    color: #f5f0e8;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+}
+
+.navbar a:hover {
+    color: #c9a96e;
+}

@@ -31,7 +31,7 @@ function SocietyDetailsPage () {
     return(
         <div>
             <h1>{society.name}</h1>
-            <Link to={`/wizards/allwizards`}>
+            <Link to={`/wizards`}>
                 <button>Back</button>
             </Link>
         </div>

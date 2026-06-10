@@ -3,13 +3,14 @@ import '../styles/WizardForm.css'
 import wizardPic from '../assets/images/wizard-profile-pic.png'
 import ministryLogo from '../assets/images/ministry-of-magic-logo-long.png'
 
-function WizardForm({ formData, onSubmit, onChange }) {
+function WizardForm({ formData, onSubmit, onChange, isEditing, onDelete, onClose }) {
 
     return (
         <div className='new-wizard-form-container'>
 
             <div className='form-header'>
                 <p className='status-stamp'>{formData.status}</p>
+                <button type="button" onClick={onClose}>X Close</button>
             </div>
 
             <div className='form-body'>
@@ -243,7 +244,8 @@ function WizardForm({ formData, onSubmit, onChange }) {
                     </div>
 
                     <div className='form-footer'>
-                        <button type="submit">Register</button>
+                        <button type="submit">{isEditing ? "Save" : "Register"}</button>
+                        {isEditing && <button type="button" onClick={onDelete}>Delete Wizard</button>}
                     </div>
 
                 </form>

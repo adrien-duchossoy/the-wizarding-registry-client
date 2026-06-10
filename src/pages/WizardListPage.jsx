@@ -7,6 +7,7 @@ import '../styles/WizardList.css'
 function WizardListPage () {
 
     const [allWizards, setAllWizards]= useState(null)
+    const [allSocieties, setAllSocieties]= useState([])
     const [isLoading, setIsLoading]= useState(true)
 
     useEffect (() => {
@@ -22,8 +23,8 @@ function WizardListPage () {
             const wizardSociety = responseWizard.data.map((wizard) => {
                 return {...wizard, society: responseSociety.data.find((society)=> society.id === wizard.societyId)}
             })
-            console.log(wizardSociety)
             setAllWizards(wizardSociety)
+            setAllSocieties(responseSociety.data)
             setIsLoading(false)
         } catch (error) {
             console.log(error)
@@ -35,7 +36,7 @@ function WizardListPage () {
     return(
         <div className="wizard-card-container">
             {allWizards.map((wizard) => {
-                return <WizardCard key={wizard.id} {...wizard} />
+                return <WizardCard key={wizard.id} {...wizard} allSocieties={allSocieties} />
             })}
         </div>
     )

@@ -31,8 +31,8 @@ function NewWizardPage () {
         const body = wizardFormData
 
         try {
-            const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/wizards`, body)
-            console.log('wizard created!')
+            await axios.post(`${import.meta.env.VITE_SERVER_URL}/wizards`, body)
+            localStorage.setItem('hasCreatedWizard', 'true')
             navigate('/societies/create')
         } catch (error) {
             console.log(error)
@@ -55,7 +55,12 @@ function NewWizardPage () {
 
     return(
         <section id="new-wizard-page-section">
-            <WizardForm formData={wizardFormData} onSubmit={handleSubmit} onChange={handleChange}/>
+            <WizardForm 
+                formData={wizardFormData}
+                onSubmit={handleSubmit}
+                onChange={handleChange}
+                onClose={() => navigate(-1)}
+            />
         </section>
     )
 }

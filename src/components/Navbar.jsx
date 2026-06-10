@@ -1,17 +1,22 @@
+
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import '../styles/Navbar.css'
 
 function Navbar (){
+
+    const [hasCreatedWizard] = useState(localStorage.getItem('hasCreatedWizard'))
+
     return(
-        <div>
+        <div className="navbar">
             <Link to={'/'}>
                 Home
             </Link>
             <Link to={'/wizards'}>
                 All wizards
             </Link>
-            <Link to={'/societies'}>
-                All Societies
-            </Link>
+            {!hasCreatedWizard && (<Link to={'/wizards/create'}>Create my wizard</Link>)}
+            
         </div>
     )
 }

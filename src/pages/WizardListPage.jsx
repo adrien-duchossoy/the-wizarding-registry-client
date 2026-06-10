@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 import WizardCard from '../components/WizardCard'
+import Filters from '../components/Filters'
 import '../styles/WizardList.css'
 
 function WizardListPage () {
@@ -9,6 +10,10 @@ function WizardListPage () {
     const [allWizards, setAllWizards]= useState(null)
     const [allSocieties, setAllSocieties]= useState([])
     const [isLoading, setIsLoading]= useState(true)
+
+    const [selectedSociety, setSelectedSociety] = useState('')
+    const [selectedHouse, setSelectedHouse]= useState('')
+    const [selectedBloodStatus, setSelectedBloodStatus]= useState('')
 
     useEffect (() => {
         getData()
@@ -33,12 +38,36 @@ function WizardListPage () {
 
     if (isLoading) return <h3>Loading...</h3>
 
+    const filteredWizards = allWizards.filter((wizard)=> {
+        if(selectedSociety && wizard.societyId !== selectedSociety) return false
+        if(selectedHouse && wizard.house !== selectedHouse) return false
+        if(selectedBloodStatus && wizard.bloodStatus !== selectedBloodStatus) return false
+        return true
+    })
+
+
+
     return(
-        <div className="wizard-card-container">
-            {allWizards.map((wizard) => {
-                return <WizardCard key={wizard.id} {...wizard} allSocieties={allSocieties} />
-            })}
-        </div>
+
+        <section className="wizard-list-section">
+            <Filters
+                allSocieties={allSocieties}
+                houses={allWizards.map((w) => w.house)}
+                bloodStatuses={allWizards.map((w) => w.bloodStatus)}
+                selectedSociety={selectedSociety}
+                onSocietyChange={(e) => setSelectedSociety(e.target.value)}
+                selectedHouse={selectedHouse}
+                onHouseChange={(e) => setSelectedHouse(e.target.value)}
+                selectedBloodStatus={selectedBloodStatus}
+                onBloodStatusChange={(e) => setSelectedBloodStatus(e.target.value)}
+            />
+            <div className="wizard-card-container">
+                {filteredWizards.map((wizard) => {
+                    return <WizardCard key={wizard.id} {...wizard} allSocieties={allSocieties} />
+                })}
+            </div>
+        </section>
+        
     )
 }
 

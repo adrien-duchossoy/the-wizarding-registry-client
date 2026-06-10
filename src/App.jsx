@@ -5,18 +5,28 @@ import NewWizardPage from "./pages/NewWizardPage"
 import NewSocietyPage from "./pages/NewSocietyPage"
 import WizardListPage from "./pages/WizardListPage"
 import SocietyDetailsPage from "./pages/SocietyDetailsPage"
+import EditWizardPage from "./pages/EditWizardPage"
+import WithNavbar from "./components/WithNavbar"
+import Homepage from "./pages/Homepage"
+import ErrorPage from "./pages/ErrorPage"
+
 
 function App() {
 
-  
+
 
   return (
     <div>
       <Routes>
-        <Route path='/' element = {<NewWizardPage />}/>
-        <Route path='/societies/create' element={<NewSocietyPage />} />
-        <Route path='/wizards/allwizards' element={<WizardListPage />} />
-        <Route path='/societies/:societyId' element={<SocietyDetailsPage />} />
+        <Route element={<WithNavbar />}>
+          <Route path='/' element = {<Homepage />}/>
+          <Route path='/societies/:societyId' element={<SocietyDetailsPage />} />
+          <Route path='/societies/create' element={<NewSocietyPage />} />
+          <Route path='/wizards' element={<WizardListPage />} />
+          <Route path='*' element={<ErrorPage />} />
+        </Route>
+        <Route path='/wizards/create' element={<NewWizardPage />} />
+        <Route path='/wizards/:wizardId/edit' element={<EditWizardPage />} />
       </Routes>
 
     </div>

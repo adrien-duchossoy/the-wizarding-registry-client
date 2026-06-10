@@ -14,14 +14,15 @@
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.25);
 }
 
-.wizard-card img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
+.wizard-card img, video{
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     border: 2px solid #8b7355;
     margin-bottom: 4px;
 }
+
+
 
 .wizard-card h3 {
     margin: 0;

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+import { getVideoUrl } from '../utils/profileVideos'
 import postEvent from '../api/events'
 
 import '../styles/WizardCard.css'
@@ -45,7 +46,7 @@ function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty,
                 </Link>
             )}
 
-            <img src={avatar || placeholderPicture} alt="profile picture of the wizard" onError={(e) => e.target.src = placeholderPicture} />
+            {avatar ? <video src={getVideoUrl(avatar)} autoPlay loop muted/> : <img src={avatar || placeholderPicture} alt="profile picture of the wizard" onError={(e) => e.target.src = placeholderPicture} />}
             <h3>{firstName} {lastName}</h3>
             <p>{bloodStatus}</p>
             <p>Loyalty {loyalty}</p>

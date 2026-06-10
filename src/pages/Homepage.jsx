@@ -46,7 +46,7 @@ function Homepage() {
       <header className="gazette-header">
         <p className="gazette-edition">Est. 1702 — Wizarding World Press</p>
         <h1 className="gazette-title">The Daily Prophet</h1>
-        <p className="gazette-tagline">All the news that's fit for wizards</p>
+        <p className="gazette-tagline">The Wizard's world beguiling broadsheet of choice</p>
       </header>
       <hr className="gazette-divider" />
       <section className="gazette-grid">

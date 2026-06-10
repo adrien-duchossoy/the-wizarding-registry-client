@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
+import postEvent from "../api/events"
+
 import WizardForm from "../components/WizardForm"
 
 
@@ -33,7 +35,8 @@ function NewWizardPage () {
         try {
             await axios.post(`${import.meta.env.VITE_SERVER_URL}/wizards`, body)
             localStorage.setItem('hasCreatedWizard', 'true')
-            navigate('/societies/create')
+            await postEvent(`A new Wizard has joined the community ! Welcome ${wizardFormData.firstName} ${wizardFormData.lastName}`, 'new_wizard')
+            navigate('/wizards')
         } catch (error) {
             console.log(error)
         }

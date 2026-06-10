@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+import postEvent from '../api/events'
+
 import '../styles/WizardCard.css'
 import placeholderPicture from '../assets/images/placeholder-avatar.png'
 
@@ -11,15 +13,25 @@ function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty,
     const [hasVoted, setHasVoted] = useState(localStorage.getItem('voted_wizard_' + id))
 
     const handleVote = async () => {
-        if (!selectedSocietyId || hasVoted) return
+        if (hasVoted) return
+        const societyToVote = currentSocietyId || selectedSocietyId
+        if (!societyToVote) return
         try {
             const updatedVoteCount = {
                 ...voteCount,
-                [selectedSocietyId]: (voteCount[selectedSocietyId] || 0) + 1
+                [societyToVote]: (voteCount[societyToVote] || 0) + 1
             }
-            await axios.patch(`${import.meta.env.VITE_SERVER_URL}/wizards/${id}`, { voteCount: updatedVoteCount })
-            localStorage.setItem('voted_wizard_' + id, selectedSocietyId)
+            const topSocietyId = Object.entries(updatedVoteCount)
+                .sort((a, b) => b[1] - a[1])[0][0]
+            await axios.patch(`${import.meta.env.VITE_SERVER_URL}/wizards/${id}`, {
+                voteCount: updatedVoteCount,
+                societyId: topSocietyId
+            })
+            localStorage.setItem('voted_wizard_' + id, societyToVote)
             setHasVoted(true)
+
+            const societyVoteName = allSocieties.find(s => s.id === societyToVote)?.name || societyToVote
+            await postEvent(`${firstName} ${lastName} has received a new vote to join ${societyVoteName}`, 'new_vote')
         } catch (error) {
             console.log(error)
         }
@@ -27,7 +39,7 @@ function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty,
 
     return (
         <div className="wizard-card">
-            {society?.name && (
+            {society && (
                 <Link className="society-badge" to={`/societies/${societyId}`}>
                     {society.name}
                 </Link>

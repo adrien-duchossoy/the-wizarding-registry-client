@@ -25,7 +25,7 @@ function NewWizardPage () {
         },
         specialty: '',
         status: 'active',
-        avatar: '',
+        avatar: getRandomVideoKey('male'),
     })
 
     const navigate = useNavigate()

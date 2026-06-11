@@ -9,13 +9,17 @@ function Navbar (){
 
     return(
         <div className="navbar">
-            <Link to={'/home'}>
-                Home
+            <Link to={'/home'} id="daily-prophet">
+                Daily Prophet
             </Link>
             <Link to={'/wizards'}>
-                All wizards
+                Registry
             </Link>
-            {!hasCreatedWizard && (<Link to={'/wizards/create'}>Create my wizard</Link>)}
+            {!hasCreatedWizard && (
+                <Link to={'/wizards/create'} className='create-wizard-link'>
+                    <button className='create-wizard-btn'>Create my wizard</button>
+                </Link>
+            )}
             
         </div>
     )

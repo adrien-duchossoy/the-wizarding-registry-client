@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
 
 .navbar {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 5%;
     padding: 16px 40px;
     background-color: #2c1a0e;
     border-bottom: 3px solid #8b7355;
@@ -11,7 +13,7 @@
 
 .navbar a {
     font-family: 'Instrument Serif', serif;
-    font-size: 1rem;
+    font-size: clamp(10px, 8vw, 15px);
     color: #f5f0e8;
     text-decoration: none;
     letter-spacing: 0.05em;
@@ -19,4 +21,50 @@
 
 .navbar a:hover {
     color: #c9a96e;
+}
+
+.create-wizard-link {
+    display: contents;
+}
+
+
+.create-wizard-btn {
+    position: relative;
+    display: block;
+    border: none;
+    cursor: pointer;
+    height: clamp(25px, 4vw, 50px);
+    width: auto;
+    aspect-ratio: 1921 / 321;
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(4px, 4vw, 20px);
+    color: #dbd4c1;
+    text-shadow: #2c1a0e 5px 5px 15px;
+    background-color: transparent;
+    z-index: 0;
+}
+
+.create-wizard-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/images/create-wizard-btn.png');
+    background-size: 100% 100%;
+    opacity: 0.88;
+    z-index: -1;
+}
+
+.create-wizard-btn:hover {
+    transform: scale(1.05);
+    opacity: 1;
+    color:#f5f0e8;
+}
+
+.create-wizard-btn:active {
+    transform: scale(0.97);
+    opacity: 1;
+}
+
+#daily-prophet {
+    font-family: 'UnifrakturMaguntia', serif;
 }

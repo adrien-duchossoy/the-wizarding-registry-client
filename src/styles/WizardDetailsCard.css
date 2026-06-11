@@ -1,0 +1,83 @@
+/* ─── CARD ───────────────────────────────────────────────────*/
+#avatar-wrapper {
+    width: 40%;
+    margin-top: 8%;
+}
+
+/* ─── NAME & SOCIETIES ───────────────────────────────────────────────────*/
+
+
+.wizard-main-info {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+
+}
+
+
+.wizard-name {
+    font-family: 'Kapakana', cursive;
+    font-size: clamp(10px, 15vw, 40px);
+    font-weight: normal;
+    font-style: italic;
+    text-shadow: #e6e1d3 5px 5px 15px;
+    color: #7d6b35;
+    text-align: center;
+    margin: 0;
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+.society-vote-container {
+    display: flex;
+}
+
+.society-vote-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+
+.society-badge {
+    width: 50%;
+}
+
+
+
+@media (width > 390px) {
+    #avatar-wrapper {
+        width: 30%;
+
+    }
+}
+
+@media (width > 500px) {
+    #avatar-wrapper {
+        width: 20%;
+
+    }
+}
+
+@media (width > 1000px) {
+    #avatar-wrapper {
+        width: 8%;
+        margin-top: 1%;
+
+    }
+
+    .wizard-main-info{
+        top: 45%
+    }
+
+    .wizard-name {
+        margin: 2% 0;
+    }
+
+    .society-badge {
+        width: 30%;
+    }
+}

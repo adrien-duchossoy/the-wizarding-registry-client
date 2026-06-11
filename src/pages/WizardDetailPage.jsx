@@ -6,6 +6,8 @@ import axios from 'axios'
 
 import WizardDetailCard from '../components/WizardDetailCard'
 
+import '../styles/WizardDetail.css'
+
 
 function WizardDetailPage (){
 
@@ -38,7 +40,8 @@ function WizardDetailPage (){
         {
             return {
                 name: society.name,
-                votes: wizard.voteCount[society.id] ? wizard.voteCount[society.id] : 0
+                votes: wizard.voteCount[society.id] ? wizard.voteCount[society.id] : 0,
+                badge: society.badge
             }
         })
     }
@@ -47,12 +50,12 @@ function WizardDetailPage (){
 
 
     return (
-        <>
+        <div className='wizard-detail-container'>
             <WizardDetailCard 
                 wizard={wizard}
                 voteBySociety={getVoteBySociety}
             />
-        </>
+        </div>
     )
 }
 

@@ -1,0 +1,8 @@
+.wizard-detail-container {
+    width: 100%;
+    min-height: 100dvh;
+    background-image: url('../assets/images/parchment-background.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}

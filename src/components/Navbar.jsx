@@ -9,7 +9,7 @@ function Navbar (){
 
     return(
         <div className="navbar">
-            <Link to={'/'}>
+            <Link to={'/home'}>
                 Home
             </Link>
             <Link to={'/wizards'}>

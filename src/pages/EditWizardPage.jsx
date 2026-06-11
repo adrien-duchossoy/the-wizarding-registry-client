@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
 
 import WizardForm from "../components/WizardForm"
+import { getRandomVideoKey } from "../utils/profileVideos"
+import { getRandomWizardData } from "../utils/randomize"
 
 function EditWizardPage() {
 
@@ -19,6 +21,7 @@ function EditWizardPage() {
                     ...data,
                     house: data.house?.toLowerCase() || '',
                     specialty: data.specialty?.toLowerCase() || '',
+                    avatar: data.avatar || '',
                 })
             })
             .catch(error => console.log(error))
@@ -44,6 +47,12 @@ function EditWizardPage() {
         } else {
             setWizardFormData({ ...wizardFormData, [fieldName]: e.target.value })
         }
+
+        if (fieldName === 'gender') {
+            const videoKey = getRandomVideoKey(e.target.value)
+            setWizardFormData({...wizardFormData, gender: e.target.value, avatar: videoKey})
+            return
+        }
     }
 
     const handleDelete = async() => {
@@ -57,13 +66,18 @@ function EditWizardPage() {
 
     if (!wizardFormData) return <h3>Loading...</h3>
 
+    const handleRandomizeAll = () => {
+        setWizardFormData(prev => ({ ...prev, ...getRandomWizardData() }))
+    }
+
     return (
         <section id="new-wizard-page-section">
-            <WizardForm 
+            <WizardForm
                 formData={wizardFormData}
                 onSubmit={handleSubmit}
                 onChange={handleChange}
                 onDelete={handleDelete}
+                onRandomizeAll={handleRandomizeAll}
                 isEditing={true}
                 onClose={() => navigate(-1)}
             />

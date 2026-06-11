@@ -5,6 +5,8 @@ import axios from "axios"
 import postEvent from "../api/events"
 
 import WizardForm from "../components/WizardForm"
+import { getRandomVideoKey } from "../utils/profileVideos"
+import { getRandomWizardData } from "../utils/randomize"
 
 
 function NewWizardPage () {
@@ -23,6 +25,7 @@ function NewWizardPage () {
         },
         specialty: '',
         status: 'active',
+        avatar: '',
     })
 
     const navigate = useNavigate()
@@ -52,16 +55,25 @@ function NewWizardPage () {
         } else {
             setWizardFormData({ ...wizardFormData, [fieldName]: e.target.value })
         }
-        console.log(wizardFormData)
+        if (fieldName === 'gender') {
+            const videoKey = getRandomVideoKey(e.target.value)
+            setWizardFormData({...wizardFormData, gender: e.target.value, avatar: videoKey})
+            return
+        }
 
+    }
+
+    const handleRandomizeAll = () => {
+        setWizardFormData(prev => ({ ...getRandomWizardData(), status: prev.status }))
     }
 
     return(
         <section id="new-wizard-page-section">
-            <WizardForm 
+            <WizardForm
                 formData={wizardFormData}
                 onSubmit={handleSubmit}
                 onChange={handleChange}
+                onRandomizeAll={handleRandomizeAll}
                 onClose={() => navigate(-1)}
             />
         </section>

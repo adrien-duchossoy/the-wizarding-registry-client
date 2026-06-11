@@ -4,7 +4,7 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 40px 24px;
-    font-family: 'Special Elite', cursive;
+    font-family: 'Instrument Serif', serif;
 }
 
 .society-header {
@@ -34,7 +34,7 @@
 
 .society-description {
     margin: 0;
-    font-family: 'Courier Prime', monospace;
+    font-family: 'Instrument Serif', serif;
     font-size: 0.95rem;
     color: #5a4a3a;
     text-align: center;
@@ -59,7 +59,7 @@
 }
 
 .society-details-page > a button {
-    font-family: 'Special Elite', cursive;
+    font-family: 'Instrument Serif', serif;
     padding: 8px 24px;
     background-color: #2c1a0e;
     color: #f5f0e8;

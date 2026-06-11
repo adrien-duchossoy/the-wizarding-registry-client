@@ -5,6 +5,7 @@ import axios from 'axios'
 import postEvent from '../api/events'
 
 import SocietyForm from '../components/SocietyForm'
+import { getRandomSocietyData } from '../utils/randomize'
 
 function NewSocietyPage () {
 
@@ -36,9 +37,13 @@ function NewSocietyPage () {
         setSocietyFormData({...societyFormData, [fieldName]: e.target.value})
     }
 
+    const handleRandomizeAll = () => {
+        setSocietyFormData(getRandomSocietyData())
+    }
+
     return (
         <section id='new-society-page-section'>
-            <SocietyForm formData={societyFormData} onSubmit={handleSubmit} onChange={handleChange}/>
+            <SocietyForm formData={societyFormData} onSubmit={handleSubmit} onChange={handleChange} onRandomizeAll={handleRandomizeAll} />
         </section>
     )
     

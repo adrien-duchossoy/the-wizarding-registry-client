@@ -1,0 +1,72 @@
+.loader-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.loader-divider {
+    width: 30%;
+}
+
+#divider-top {
+    margin-bottom: 5vh;
+}
+
+#divider-bottom {
+    margin-top: 5vh;
+}
+
+/* ─── BARRE ───────────────────────────────────────────────── */
+.loader-container {
+    position: relative;
+    width: 60%;
+}
+
+.loader-frame {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.loader-track {
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+    top: 18%;
+    bottom: 18%;
+    left: 7%;
+    right: 7%;
+    border-radius: 100px;
+}
+
+.loader-fill {
+    height: 100%;
+    background: linear-gradient(to right, #3d3a00, #8a7e10, #c8b84a, #f0e070, #fffff0);
+    box-shadow: 0 0 24px #d4c44a, 0 0 8px #fffff0;
+    border-radius: 100px;
+    transition: width 0.4s ease;
+}
+
+/* ─── PHRASE ──────────────────────────────────────────────── */
+.loader-phrase {
+    color: #c8a84a;
+    font-family: 'Instrument Serif', serif;
+
+    font-size: clamp(0.5rem, 1.5vw, 1rem);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    transition: opacity 0.4s ease;
+}
+
+.loader-phrase.visible { opacity: 1; }
+.loader-phrase.hidden  { opacity: 0; }
+
+/* ─── DESKTOP ─────────────────────────────────────────────── */
+@media (width > 1000px) {
+    .loader-container { width: 25%; }
+    .loader-divider   { width: 15%; }
+    #divider-top      { margin-bottom: 10vh; }
+    #divider-bottom   { margin-top: 10vh; }
+}

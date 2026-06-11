@@ -7,7 +7,7 @@
     padding: 14px 40px;
     background-color: #f5f0e8;
     border-bottom: 2px solid #8b7355;
-    font-family: 'Special Elite', cursive;
+    font-family: 'Instrument Serif', serif;
 }
 
 .filter-group {
@@ -23,7 +23,7 @@
 }
 
 .filters-bar select {
-    font-family: 'Special Elite', cursive;
+    font-family: 'Instrument Serif', serif;
     font-size: 0.85rem;
     padding: 5px 10px;
     border: 1px solid #8b7355;

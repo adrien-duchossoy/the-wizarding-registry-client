@@ -12,6 +12,9 @@
     display: block;
     width: 100%;
     height: auto;
+    -webkit-filter: drop-shadow(5px 5px 5px #2c1a0e);
+    filter: drop-shadow(5px 5px 10px #ad9f96);
+
 }
 
 .wizard-card-photo-wrapper {
@@ -123,7 +126,7 @@
 .vote-section select {
     width: 100%;
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(8px, 2.5vw, 11px);
+    font-size: clamp(8px, 2.5vw, 20px);
     background: rgba(255,255,255,0.8);
     border: 1px solid #8b7355;
     padding: 3px 6px;
@@ -142,7 +145,7 @@
     border: none;
     color: #f5e8c8;
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(4px, 1.2vw, 10px);
+    font-size: clamp(4px, 1.2vw,15px);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
@@ -157,10 +160,26 @@
 
 .vote-confirmation {
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(8px, 2.5vw, 11px);
+    font-size: clamp(8px, 2.5vw, 15px);
+    text-transform: uppercase;
     color: #AD9853;
     text-align: center;
 }
+
+.vote-submitted {
+    width: 100%;
+    aspect-ratio: 988 / 318;
+    background-image: url('../assets/images/vote-submitted.png');
+    background-size: 100% 100%;
+    background-color: transparent;
+    border: none;
+    cursor: default;
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(6px, 1.5vw, 20px);
+    color: #866F4E;
+    padding-top: 3%;
+}
+
 
 /* ─── ACTION BUTTONS ─────────────────────────────────────────*/
 .wizard-card-actions {
@@ -187,7 +206,7 @@
     background-size: 100% 100%;
     cursor: pointer;
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(2px, 1vw, 9px);
+    font-size: clamp(2px, 1vw, 12px);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     padding: 20% 0 0 0;

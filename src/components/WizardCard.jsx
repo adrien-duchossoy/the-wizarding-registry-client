@@ -77,7 +77,7 @@ function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty,
 
                     <div className="vote-section">
                         {hasVoted ? (
-                            <p className="vote-confirmation">Vote submitted ✓</p>
+                            <button className="vote-submitted" disabled>VOTE SUBMITTED ✓</button>
                         ) : (
                             <div style={{ position: 'relative', width: '100%' }}>
                                 <button className="vote-btn">Submit your vote</button>
@@ -103,7 +103,7 @@ function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty,
                             <button className="details-btn">See Details</button>
                         </Link>
                         <Link to={`/wizards/${id}/edit`}>
-                            <button className="edit-btn">Edit</button>
+                            <button className="edit-btn">Edit Wizard</button>
                         </Link>
                     </div>
                 </div>

@@ -1,3 +1,7 @@
+.wizard-list-section{
+    background-color: #eeece9;
+}
+
 .wizard-card-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

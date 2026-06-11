@@ -5,4 +5,11 @@
     padding: 40px;
     max-width: 1200px;
     margin: 0 auto;
+    justify-items: center;
+}
+
+@media (width > 1000px) {
+    .wizard-card-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

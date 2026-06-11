@@ -6,12 +6,15 @@ import { getVideoUrl } from '../utils/profileVideos'
 import postEvent from '../api/events'
 
 import '../styles/WizardCard.css'
-import placeholderPicture from '../assets/images/placeholder-avatar.png'
+import cardBackground from '../assets/images/wizard-card-background.png'
+import framePicture from '../assets/images/frame-picture.png'
+import societyBorderSvg from '../assets/images/society-border.svg'
 
 function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty, bloodStatus, societyId, currentSocietyId, voteCount = {}, allSocieties = [] }) {
 
     const [selectedSocietyId, setSelectedSocietyId] = useState('')
     const [hasVoted, setHasVoted] = useState(localStorage.getItem('voted_wizard_' + id))
+    const [showVoteSelect, setShowVoteSelect] = useState(false)
 
     const handleVote = async () => {
         if (hasVoted) return
@@ -30,7 +33,6 @@ function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty,
             })
             localStorage.setItem('voted_wizard_' + id, societyToVote)
             setHasVoted(true)
-
             const societyVoteName = allSocieties.find(s => s.id === societyToVote)?.name || societyToVote
             await postEvent(`${firstName} ${lastName} has received a new vote to join ${societyVoteName}`, 'new_vote')
         } catch (error) {
@@ -38,52 +40,75 @@ function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty,
         }
     }
 
+    const handleVoteButtonClick = () => {
+        if (currentSocietyId) {
+            handleVote()
+        } else if (!showVoteSelect) {
+            setShowVoteSelect(true)
+        } else {
+            handleVote()
+        }
+    }
+
     return (
         <div className="wizard-card">
-            {society && (
-                <Link className="society-badge" to={`/societies/${societyId}`}>
-                    {society.name}
-                </Link>
-            )}
+            <img className="wizard-card-bg" src={cardBackground} alt="" />
 
-            {avatar ? <video src={getVideoUrl(avatar)} autoPlay loop muted/> : <img src={avatar || placeholderPicture} alt="profile picture of the wizard" onError={(e) => e.target.src = placeholderPicture} />}
-            <h3>{firstName} {lastName}</h3>
-            <p>{bloodStatus}</p>
-            <p>Loyalty {loyalty}</p>
 
-            <div className="vote-section">
-                {hasVoted ? (
-                    <p className="vote-confirmation">Vote submitted ✓</p>
-                ) : (
-                    <>
-                        {currentSocietyId ? (
-                            <button onClick={handleVote}>Upvote to stay in society</button>
-                        )
-                            : (
-                                <>
+            <div className="wizard-card-photo-wrapper">
+                <div className="wizard-card-avatar">
+                    {avatar
+                        ? <video src={getVideoUrl(avatar)} autoPlay loop muted />
+                        : <img src="/placeholder-avatar.png" alt="profile" />
+                    }
+                </div>
+                <img className="wizard-card-frame" src={framePicture} alt="" />
+            </div>
+
+            {/* contenu positionné par rapport au background */}
+            <div className="wizard-card-content">
+                <div className="wizard-card-bottom">
+                    <h3 className="wizard-card-name">{firstName} {lastName}</h3>
+
+                    <div className="wizard-card-society">
+                        {society
+                            ? <Link to={`/societies/${societyId}`}>{society.name}</Link>
+                            : <span>No society</span>
+                        }
+                    </div>
+
+                    <div className="vote-section">
+                        {hasVoted ? (
+                            <p className="vote-confirmation">Vote submitted ✓</p>
+                        ) : (
+                            <>
+                                {showVoteSelect && !currentSocietyId && (
                                     <select value={selectedSocietyId} onChange={(e) => setSelectedSocietyId(e.target.value)}>
-                                        <option value="">Vote for a society</option>
+                                        <option value="">Select a society</option>
                                         {allSocieties.map((s) => (
                                             <option key={s.id} value={s.id}>{s.name}</option>
                                         ))}
                                     </select>
-                                    <button onClick={handleVote} disabled={!selectedSocietyId}>Vote</button>
-                                </>
-                            )}
+                                )}
+                                <button className="vote-btn" onClick={handleVoteButtonClick}>
+                                    Submit your vote<br />for organization
+                                </button>
+                            </>
+                        )}
+                    </div>
 
-                    </>
-                )}
-            </div>
+                    <div className="wizard-card-actions">
+                        <Link to={`/wizards/${id}`}>
+                            <button className="details-btn">See Details</button>
+                        </Link>
+                        <Link to={`/wizards/${id}/edit`}>
+                            <button className="edit-btn">Edit Wizard</button>
+                        </Link>
+                    </div>
+                </div>
 
-            <div>
-                <Link to={`/wizards/${id}`}>
-                    <button>View more</button>
-                </Link>
-                <Link to={`/wizards/${id}/edit`}>
-                    <button>Edit</button>
-                </Link>
             </div>
-        </div >
+        </div>
     )
 }
 

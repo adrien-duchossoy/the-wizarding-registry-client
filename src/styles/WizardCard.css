@@ -1,72 +1,221 @@
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kapakana&display=swap');
 
+/* ─── CARD ───────────────────────────────────────────────────*/
 .wizard-card {
+    position: relative;
+    width: 50%;
+    padding-top: 20%;
+}
+
+.wizard-card-bg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.wizard-card-photo-wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55%;
+    z-index: 3;
+}
+
+.wizard-card-frame {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.wizard-card-content {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    padding: 24px 20px;
-    font-family: 'Instrument Serif', serif;
-    background-color: #f5f0e8;
-    border: 2px solid #8b7355;
-    border-radius: 4px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.25);
+    justify-content: flex-end;
+    padding: 0 32px 20%;
+    box-sizing: border-box;
 }
 
-.wizard-card img, video{
-    width: 100px;
-    height: 100px;
+.wizard-card-avatar {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 75%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.wizard-card-avatar img,
+.wizard-card-avatar video {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border: 2px solid #8b7355;
-    margin-bottom: 4px;
+    display: block;
 }
 
+/* ─── BOTTOM SECTION ─────────────────────────────────────── */
+.wizard-card-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2%;
+    width: 100%;
+}
 
-
-.wizard-card h3 {
+/* ─── NOM ────────────────────────────────────────────────── */
+.wizard-card-name {
+    font-family: 'Kapakana', cursive;
+    font-size: clamp(10px, 4vw, 35px);
+    font-weight: normal;
+    font-style: italic;
+    color: #AD9853;
+    text-align: center;
     margin: 0;
-    font-size: 1.1rem;
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+/* ─── SOCIETY BANNER ─────────────────────────────────────────*/
+.wizard-card-society {
+    width: 100%;
+    aspect-ratio: 252 / 51;
+    background-image: url('../assets/images/society-border.svg');
+    background-size: 100% 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wizard-card-society a,
+.wizard-card-society span {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(6px, 1.2vw, 11px);
     color: #2c1a0e;
-    text-align: center;
-}
-
-.wizard-card p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #5a4a3a;
-}
-
-.wizard-card a {
     text-decoration: none;
-}
-
-.society-badge {
-    font-family: 'Instrument Serif', serif;
-    font-size: 0.75rem;
-    color: #f5f0e8;
-    background-color: #8b7355;
-    padding: 4px 10px;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90%;
     text-align: center;
 }
 
-.society-badge:hover {
-    background-color: #2c1a0e;
+/* ─── VOTE SECTION ───────────────────────────────────────── */
+.vote-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
 }
 
-.wizard-card button {
-    margin-top: 8px;
-    padding: 6px 20px;
+.vote-section select {
+    width: 100%;
     font-family: 'Instrument Serif', serif;
-    font-size: 0.85rem;
-    background-color: #2c1a0e;
-    color: #f5f0e8;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.15s ease;
+    font-size: clamp(8px, 2.5vw, 11px);
+    background: rgba(255,255,255,0.8);
+    border: 1px solid #8b7355;
+    padding: 3px 6px;
+    color: #2c1a0e;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
-.wizard-card button:hover {
-    background-color: #8b7355;
+
+.vote-btn {
+    width: 100%;
+    aspect-ratio: 988 / 318;
+    background-image: url('../assets/images/vote-button.png');
+    background-size: 100% 100%;
+    background-color: transparent;
+    border: none;
+    color: #f5e8c8;
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(7px, 2.2vw, 10px);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    line-height: 1.4;
+    text-align: center;
+    padding: 0;
+}
+
+.vote-btn:hover {
+    opacity: 0.88;
+}
+
+.vote-confirmation {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(8px, 2.5vw, 11px);
+    color: #AD9853;
+    text-align: center;
+}
+
+/* ─── ACTION BUTTONS ─────────────────────────────────────────*/
+.wizard-card-actions {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+}
+
+.wizard-card-actions a {
+    flex: 1;
+    display: block;
+}
+
+
+
+
+.details-btn,
+.edit-btn {
+    width: 100%;
+    aspect-ratio: 494 / 225;
+    border: none;
+    background-color: transparent;
+    background-size: 100% 100%;
+    cursor: pointer;
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(6px, 1vw, 9px);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0;
+    display: block;
+}
+
+.details-btn {
+    background-image: url('../assets/images/details-button.png');
+    color: #2c1a0e;
+}
+
+.edit-btn {
+    background-image: url('../assets/images/edit-button.png');
+    color: #f5e8c8;
+}
+
+.details-btn:hover,
+.edit-btn:hover {
+    opacity: 0.85;
+}
+
+@media (width > 500px) {
+    .wizard-card-society {
+        width: 70%;
+    }
+}
+
+@media (width > 900px) {
+    .wizard-card-society {
+        width: 50%;
+    }
 }

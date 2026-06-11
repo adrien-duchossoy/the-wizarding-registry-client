@@ -4,7 +4,7 @@
 /* ─── CARD ───────────────────────────────────────────────────*/
 .wizard-card {
     position: relative;
-    width: 50%;
+    width: 100%;
     padding-top: 20%;
 }
 
@@ -142,7 +142,7 @@
     border: none;
     color: #f5e8c8;
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(7px, 2.2vw, 10px);
+    font-size: clamp(4px, 1.2vw, 10px);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
@@ -172,6 +172,7 @@
 .wizard-card-actions a {
     flex: 1;
     display: block;
+    text-decoration: none;
 }
 
 
@@ -186,10 +187,10 @@
     background-size: 100% 100%;
     cursor: pointer;
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(6px, 1vw, 9px);
+    font-size: clamp(2px, 1vw, 9px);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 0;
+    padding: 20% 0 0 0;
     display: block;
 }
 

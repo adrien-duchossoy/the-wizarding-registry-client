@@ -16,9 +16,8 @@ function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty,
     const [hasVoted, setHasVoted] = useState(localStorage.getItem('voted_wizard_' + id))
     const [showVoteSelect, setShowVoteSelect] = useState(false)
 
-    const handleVote = async () => {
+    const handleVote = async (societyToVote) => {
         if (hasVoted) return
-        const societyToVote = currentSocietyId || selectedSocietyId
         if (!societyToVote) return
         try {
             const updatedVoteCount = {
@@ -65,7 +64,6 @@ function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty,
                 <img className="wizard-card-frame" src={framePicture} alt="" />
             </div>
 
-            {/* contenu positionné par rapport au background */}
             <div className="wizard-card-content">
                 <div className="wizard-card-bottom">
                     <h3 className="wizard-card-name">{firstName} {lastName}</h3>
@@ -81,19 +79,22 @@ function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty,
                         {hasVoted ? (
                             <p className="vote-confirmation">Vote submitted ✓</p>
                         ) : (
-                            <>
-                                {showVoteSelect && !currentSocietyId && (
-                                    <select value={selectedSocietyId} onChange={(e) => setSelectedSocietyId(e.target.value)}>
-                                        <option value="">Select a society</option>
-                                        {allSocieties.map((s) => (
-                                            <option key={s.id} value={s.id}>{s.name}</option>
-                                        ))}
-                                    </select>
-                                )}
-                                <button className="vote-btn" onClick={handleVoteButtonClick}>
-                                    Submit your vote<br />for organization
-                                </button>
-                            </>
+                            <div style={{ position: 'relative', width: '100%' }}>
+                                <button className="vote-btn">Submit your vote</button>
+                                <select
+                                    style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer' }}
+                                    value={selectedSocietyId}
+                                    onChange={(e) => {
+                                        setSelectedSocietyId(e.target.value)
+                                        handleVote(e.target.value)
+                                    }}
+                                >
+                                    <option value="" disabled>Select a society</option>
+                                    {allSocieties.map((s) => (
+                                        <option key={s.id} value={s.id}>{s.name}</option>
+                                    ))}
+                                </select>
+                            </div>
                         )}
                     </div>
 
@@ -102,7 +103,7 @@ function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty,
                             <button className="details-btn">See Details</button>
                         </Link>
                         <Link to={`/wizards/${id}/edit`}>
-                            <button className="edit-btn">Edit Wizard</button>
+                            <button className="edit-btn">Edit</button>
                         </Link>
                     </div>
                 </div>

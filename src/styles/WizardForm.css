@@ -363,7 +363,7 @@ select:focus {
     grid-column: 1 / -1;
     grid-row: 3;
     border-top: 1px solid #6a6560;
-    margin-top: 4%;
+    margin-top: 30%;
     padding-top: 3%;
     display: flex;
     justify-content: flex-end;
@@ -414,5 +414,9 @@ button[type="submit"]:hover, .main-btn:hover {
 
     .form-identity-card {
         width: 35%;
+    }
+
+    .form-footer {
+        margin-top: 15%;
     }
 }

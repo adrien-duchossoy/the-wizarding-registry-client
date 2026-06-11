@@ -1,7 +1,9 @@
 import '../styles/WizardForm.css'
 
+import { useState } from 'react'
 import { getVideoUrl, getRandomVideoKey } from '../utils/profileVideos'
 import { getRandomWizardValue } from '../utils/randomize'
+import ConfirmModal from './ConfirmModal'
 
 import wizardPic from '../assets/images/wizard-profile-pic.png'
 import ministryLogo from '../assets/images/ministry-of-magic-logo-long.png'
@@ -10,6 +12,8 @@ import pointerLeft from '../assets/images/pointer-left.png'
 import pointerRight from '../assets/images/pointer-right.png'
 
 function WizardForm({ formData, onSubmit, onChange, isEditing, onDelete, onClose, onRandomizeAll }) {
+
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
 
     const randomize = (fieldName) => {
         onChange({ target: { name: fieldName, value: getRandomWizardValue(fieldName, formData.gender) } })
@@ -312,11 +316,19 @@ function WizardForm({ formData, onSubmit, onChange, isEditing, onDelete, onClose
                     <div className='form-footer'>
                         <button type="button" className='main-btn' onClick={onRandomizeAll}>Randomize All</button>
                         <button type="submit" className='main-btn'>{isEditing ? "Save" : "Register"}</button>
-                        {isEditing && <button type="button" className='main-btn' id='delete-btn' onClick={onDelete}>Delete Wizard</button>}
+                        {isEditing && <button type="button" className='main-btn' id='delete-btn' onClick={() => setShowDeleteModal(true)}>Delete Wizard</button>}
                     </div>
 
                 </form>
             </div>
+
+            {showDeleteModal && (
+                <ConfirmModal
+                    message="Are you sure you want to delete this wizard ?"
+                    onConfirm={onDelete}
+                    onCancel={() => setShowDeleteModal(false)}
+                />
+            )}
 
         </div>
     )

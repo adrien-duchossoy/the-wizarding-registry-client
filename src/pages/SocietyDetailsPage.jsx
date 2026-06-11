@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 import WizardCard from '../components/WizardCard'
+import ConfirmModal from '../components/ConfirmModal'
 import '../styles/SocietyDetails.css'
 
 
@@ -15,6 +16,7 @@ function SocietyDetailsPage () {
     const [society, setSociety] = useState(null)
     const [wizards, setWizards] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
 
     useEffect(() => {
         getData()
@@ -30,6 +32,15 @@ function SocietyDetailsPage () {
             setSociety(responseSociety.data)
             setWizards(responseWizard.data)
             setIsLoading(false)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleDelete = async () => {
+        try {
+            await axios.delete(`${import.meta.env.VITE_SERVER_URL}/societies/${societyId}`)
+            navigate('/wizards')
         } catch (error) {
             console.log(error)
         }
@@ -55,6 +66,15 @@ function SocietyDetailsPage () {
             <Link to={`/wizards`}>
                 <button>Back</button>
             </Link>
+            <button onClick={() => setShowDeleteModal(true)}>Delete Society</button>
+
+            {showDeleteModal && (
+                <ConfirmModal
+                    message="Are you sure you want to delete this society ?"
+                    onConfirm={handleDelete}
+                    onCancel={() => setShowDeleteModal(false)}
+                />
+            )}
 
         </div>
     )

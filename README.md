@@ -1,171 +1,85 @@
-<p align="center">
-  <img src="public/wizarding-registry-logo.png" alt="The Wizarding Registry" width="300" />
-</p>
+# The Wizarding Registry
 
-<h1 align="center">The Wizarding Registry — Client</h1>
+## [See the App!](https://the-wizarding-registry.vercel.app/)
 
-<p align="center">
-  A React application for managing the official registry of wizards and their societies.
-  <br />
-  Built as a full-stack project at Ironhack.
-</p>
+![App Logo](public/wizarding-registry-logo.png)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React 19" />
-  <img src="https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white" alt="Vite 8" />
-  <img src="https://img.shields.io/badge/React_Router-7-CA4245?logo=reactrouter&logoColor=white" alt="React Router 7" />
-  <img src="https://img.shields.io/badge/Deployed-Vercel-000000?logo=vercel&logoColor=white" alt="Vercel" />
-</p>
+## Description
 
----
+An official registry for the Wizarding World — browse wizards, vote for their society affiliation, and follow the latest news through the Daily Prophet feed.
 
-## Table of Contents
+#### [Client Repo here](https://github.com/adrien-duchossoy/the-wizarding-registry-client)
+#### [Server Repo here](https://github.com/adrien-duchossoy/the-wizarding-registry-server)
 
-- [About the Project](#about-the-project)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Environment Variables](#environment-variables)
-  - [Running the App](#running-the-app)
-- [Project Structure](#project-structure)
-- [Routes](#routes)
-- [Related Repository](#related-repository)
+## Technologies, Libraries & APIs used
 
----
+- React 19
+- Vite 8
+- React Router DOM 7
+- Axios
+- CSS (component-scoped stylesheets)
 
-## About the Project
+## Backlog Functionalities
 
-The Wizarding Registry is the official record-keeping application of the Wizarding World. Citizens can browse registered wizards, vote for their society affiliation, and follow the latest news through the **Daily Prophet** feed — which updates in real time as new wizards and societies are added.
+- Authentication (sign up / login)
+- Wizard search by name
+- Society ranking by total votes
+- Admin panel to moderate wizards and societies
 
-This repository contains the **frontend client**. It communicates with a separate REST API (see [Related Repository](#related-repository)).
+# Client Structure
 
----
+## User Stories
 
-## Features
+- **404** - As a user I want to see a nice 404 page when I go to a page that doesn't exist so that I know it was my fault
+- **homepage** - As a user I want to access the Daily Prophet feed so that I can see the latest events in the Wizarding Registry
+- **wizard list** - As a user I want to browse all registered wizards and filter them by house, blood status, or society so that I can find who I'm looking for
+- **wizard detail** - As a user I want to see a wizard's full profile and their vote breakdown per society
+- **vote** - As a user I want to vote for a wizard's society affiliation so that I can influence where they belong
+- **create wizard** - As a user I want to register a new wizard so that they appear in the official registry
+- **edit wizard** - As a user I want to edit a wizard's information so that the registry stays accurate
+- **create society** - As a user I want to create a new society so that wizards can be affiliated to it
+- **society details** - As a user I want to see the details of a society and its members
 
-- **Animated intro** — immersive loader screen on first visit
-- **Daily Prophet feed** — homepage styled as a wizarding newspaper, displaying the latest registry events
-- **Wizard list** — browse all registered wizards with filters by house, blood status, and society
-- **Wizard detail** — full profile with a vote breakdown per society
-- **Voting system** — cast one vote per wizard to influence their society assignment (persisted in `localStorage`)
-- **Create & edit wizards** — add new wizards to the registry or update existing records
-- **Society management** — create new societies and view their member details
-- **Error page** — custom 404 handling
+## Client Routes
 
----
+## React Router Routes (React App)
+| Path                        | Page                  | Components         | Behavior                                              |
+| --------------------------- | --------------------- | ------------------ | ----------------------------------------------------- |
+| `/`                         | LoaderPreview         |                    | Animated intro / splash screen                        |
+| `/home`                     | Homepage              |                    | Daily Prophet feed with latest registry events        |
+| `/wizards`                  | WizardList            | WizardCard, Filters | Browse all wizards with filters                      |
+| `/wizards/:wizardId`        | WizardDetail          | WizardDetailCard   | Full wizard profile with vote breakdown               |
+| `/wizards/create`           | NewWizard             | WizardForm         | Form to register a new wizard                         |
+| `/wizards/:wizardId/edit`   | EditWizard            | WizardForm         | Form to edit an existing wizard                       |
+| `/societies/create`         | NewSociety            | SocietyForm        | Form to create a new society                          |
+| `/societies/:societyId`     | SocietyDetails        |                    | Society details and member list                       |
+| `*`                         | Error                 |                    | 404 fallback page                                     |
 
-## Tech Stack
+## Other Components
 
-| Layer       | Technology                              |
-|-------------|-----------------------------------------|
-| Framework   | [React 19](https://react.dev)           |
-| Build tool  | [Vite 8](https://vitejs.dev)            |
-| Routing     | [React Router DOM 7](https://reactrouter.com) |
-| HTTP client | [Axios](https://axios-http.com)         |
-| Linting     | ESLint                                  |
-| Deployment  | [Vercel](https://vercel.com)            |
+- Navbar
+- Loader
+- ConfirmModal
+- WithNavbar (layout wrapper)
 
----
+## Links
 
-## Getting Started
+### Collaborators
 
-### Prerequisites
+[Adrien Duchossoy](https://github.com/adrien-duchossoy)
 
-- [Node.js](https://nodejs.org) v18+
-- The backend API running locally (see [Related Repository](#related-repository))
+### Project
 
-### Installation
+[Repository Link Client](www.your-github-url-here.com)
 
-```bash
-git clone https://github.com/adrien-duchossoy/the-wizarding-registry-project-front.git
-cd the-wizarding-registry-project-front
-npm install
-```
+[Repository Link Server](www.your-github-url-here.com)
 
-### Environment Variables
+[Deploy Link](www.your-deploy-url-here.com)
 
-Create a `.env` file at the root of the project:
+### Trello
 
-```env
-VITE_SERVER_URL=http://localhost:5005
-```
+[Link to your trello board](www.your-trello-url-here.com)
 
-> Update the URL if your backend runs on a different port.
+### Slides
 
-### Running the App
-
-```bash
-# Development server with hot reload
-npm run dev
-
-# Production build
-npm run build
-
-# Preview the production build locally
-npm run preview
-```
-
-The app will be available at `http://localhost:5173`.
-
----
-
-## Project Structure
-
-```
-src/
-├── api/            # Axios API calls (events)
-├── assets/         # Static images and videos
-├── components/     # Reusable UI components
-│   ├── ConfirmModal.jsx
-│   ├── Filters.jsx
-│   ├── Loader.jsx
-│   ├── Navbar.jsx
-│   ├── WizardCard.jsx
-│   ├── WizardDetailCard.jsx
-│   └── WizardForm.jsx
-├── pages/          # Route-level page components
-│   ├── Homepage.jsx          # Daily Prophet feed
-│   ├── WizardListPage.jsx    # Filterable wizard list
-│   ├── WizardDetailPage.jsx  # Wizard profile & votes
-│   ├── NewWizardPage.jsx
-│   ├── EditWizardPage.jsx
-│   ├── NewSocietyPage.jsx
-│   ├── SocietyDetailsPage.jsx
-│   └── ErrorPage.jsx
-├── styles/         # Component-scoped CSS files
-└── utils/          # Helper functions
-```
-
----
-
-## Routes
-
-| Path                        | Component              | Description                        |
-|-----------------------------|------------------------|------------------------------------|
-| `/`                         | `LoaderPreviewPage`    | Animated intro / splash screen     |
-| `/home`                     | `Homepage`             | Daily Prophet news feed            |
-| `/wizards`                  | `WizardListPage`       | Full wizard list with filters      |
-| `/wizards/:wizardId`        | `WizardDetailPage`     | Wizard profile & society votes     |
-| `/wizards/create`           | `NewWizardPage`        | Form to register a new wizard      |
-| `/wizards/:wizardId/edit`   | `EditWizardPage`       | Form to edit an existing wizard    |
-| `/societies/create`         | `NewSocietyPage`       | Form to create a new society       |
-| `/societies/:societyId`     | `SocietyDetailsPage`   | Society details and members        |
-| `*`                         | `ErrorPage`            | 404 fallback                       |
-
----
-
-## Related Repository
-
-This client requires the backend API to be running:
-
-> **[the-wizarding-registry-project — Server](https://github.com/adrien-duchossoy/the-wizarding-registry-project-back)**
-
-The API exposes the following resources:
-
-- `GET / POST /wizards` — wizard registry
-- `GET / PATCH /wizards/:id` — single wizard
-- `GET / POST /societies` — society registry
-- `GET /societies/:id` — single society
-- `GET / POST /events` — Daily Prophet event feed
+[Slides Link](www.your-slides-url-here.com)

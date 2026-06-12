@@ -70,16 +70,9 @@ An official registry for the Wizarding World — browse wizards, vote for their 
 
 ### Project
 
-[Repository Link Client](www.your-github-url-here.com)
+[Repository Link Client](https://github.com/adrien-duchossoy/the-wizarding-registry-client)
 
-[Repository Link Server](www.your-github-url-here.com)
+[Repository Link Server](https://github.com/adrien-duchossoy/the-wizarding-registry-server)
 
-[Deploy Link](www.your-deploy-url-here.com)
+[Deploy Link](https://the-wizarding-registry.vercel.app/)
 
-### Trello
-
-[Link to your trello board](www.your-trello-url-here.com)
-
-### Slides
-
-[Slides Link](www.your-slides-url-here.com)

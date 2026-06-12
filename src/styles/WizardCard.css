@@ -19,7 +19,7 @@
 
 .wizard-card-photo-wrapper {
     position: absolute;
-    top: 0;
+    top: -6%;
     left: 50%;
     transform: translateX(-50%);
     width: 55%;

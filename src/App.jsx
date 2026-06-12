@@ -11,6 +11,7 @@ import WithNavbar from "./components/WithNavbar"
 import Homepage from "./pages/Homepage"
 import ErrorPage from "./pages/ErrorPage"
 import LoaderPreviewPage from "./pages/LoaderPreviewPage"
+import LoaderDemoPage from "./pages/LoaderDemoPage"
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path='*' element={<ErrorPage />} />
         </Route>
         <Route path='/' element={<LoaderPreviewPage />} />
+        <Route path='/loader' element={<LoaderDemoPage />} />
         <Route path='/wizards/create' element={<NewWizardPage />} />
         <Route path='/wizards/:wizardId/edit' element={<EditWizardPage />} />
       </Routes>

@@ -10,7 +10,7 @@ import cardBackground from '../assets/images/wizard-card-background.png'
 import framePicture from '../assets/images/frame-picture.png'
 import societyBorderSvg from '../assets/images/society-border.svg'
 
-function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty, bloodStatus, societyId, currentSocietyId, voteCount = {}, allSocieties = [] }) {
+function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty, bloodStatus, societyId, currentSocietyId, currentSocietyName, voteCount = {}, allSocieties = [] }) {
 
     const [selectedSocietyId, setSelectedSocietyId] = useState('')
     const [hasVoted, setHasVoted] = useState(localStorage.getItem('voted_wizard_' + id))
@@ -71,7 +71,9 @@ function WizardCard({ id, firstName, lastName, society, status, avatar, loyalty,
                     <div className="wizard-card-society">
                         {society
                             ? <Link to={`/societies/${societyId}`}>{society.name}</Link>
-                            : <span>No society</span>
+                            : currentSocietyName
+                                ? <Link to={`/societies/${currentSocietyId}`}>{currentSocietyName}</Link>
+                                : <span>No society</span>
                         }
                     </div>
 

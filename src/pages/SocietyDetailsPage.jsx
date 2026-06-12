@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 
 import WizardCard from '../components/WizardCard'
 import ConfirmModal from '../components/ConfirmModal'
-import { getBadgeUrl } from '../utils/societyBadge'
 import '../styles/SocietyDetails.css'
 
 
@@ -53,7 +52,7 @@ function SocietyDetailsPage () {
         <div className="society-details-page">
 
             <div className="society-header">
-                <img className="society-crest" src={getBadgeUrl(society.badge)} alt={society.name} />
+                <img className="society-crest" src={`/${society.badge}`} alt={society.name} />
                 <h1 className="society-name">{society.name}</h1>
                 <p className="society-description">{society.description}</p>
             </div>

@@ -2,7 +2,6 @@
 import { useNavigate } from 'react-router-dom'
 
 import { getVideoUrl } from '../utils/profileVideos'
-import { getBadgeUrl } from '../utils/societyBadge'
 
 
 import '../styles/WizardDetailsCard.css'
@@ -31,18 +30,18 @@ function WizardDetailCard({ wizard, voteBySociety }) {
             <div className='wizard-main-info'>
                 <h1 className='wizard-name'>{wizard.firstName} {wizard.lastName}</h1>
                 <div className='society-vote-container'>
-                {voteBySociety().map((societyVote) => {
-                    return (
-                        <div className='society-vote-info'>
-                            <img className='society-badge' src={getBadgeUrl(societyVote.badge)} alt="Society badge" />
-                            <p key={societyVote.name}>
-                                {societyVote.votes} {societyVote.votes <= 1 ? 'vote' : 'votes'}
-                            </p>
-                        </div>
+                    {voteBySociety().map((societyVote) => {
+                        return (
+                            <div className='society-vote-info'>
+                                <img className='society-badge' src={`/${societyVote.badge}`} alt="Society badge" />
+                                <p key={societyVote.name}>
+                                    {societyVote.votes} {societyVote.votes <= 1 ? 'vote' : 'votes'}
+                                </p>
+                            </div>
 
-                    )
-                })
-                }
+                        )
+                    })
+                    }
                 </div>
 
             </div>

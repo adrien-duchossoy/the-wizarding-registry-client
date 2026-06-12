@@ -46,6 +46,14 @@
     width: 50%;
 }
 
+.back-btn {
+    width: 10%;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    cursor: pointer;
+}
+
 
 
 @media (width > 390px) {

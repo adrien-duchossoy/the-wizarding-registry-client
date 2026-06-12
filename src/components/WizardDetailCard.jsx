@@ -7,6 +7,7 @@ import { getVideoUrl } from '../utils/profileVideos'
 import '../styles/WizardDetailsCard.css'
 
 import framePicture from '../assets/images/frame-picture.png'
+import backBtn from '../assets/images/back-btn.png'
 
 
 
@@ -46,8 +47,7 @@ function WizardDetailCard({ wizard, voteBySociety }) {
 
             </div>
 
-
-            <button onClick={() => navigate(-1)}>Back</button>
+            <img className='back-btn' src={backBtn} alt="Back Button" onClick={() => navigate(-1)} />
         </div>
     )
 }
